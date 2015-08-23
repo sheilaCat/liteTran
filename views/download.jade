@@ -1,0 +1,18 @@
+extends layout
+block content
+    div.content
+        p.input 输入口令下载文件
+        div.row
+            div.col-xs-5
+            div.col-xs-2
+               input.form-control(placeholder="请输入口令")(type="text").key.btn-block
+            div.col-xs-5
+        a(type="button").btn.btn-primary.btn-lg.downloadKey 下载
+        p.propaganda 文件传输从未如此简单
+     footer
+        script.
+            $("a.downloadKey").on("click", function(){
+                var key = $("input.key").val();
+                href = "/download/key="+key;
+                location.href=href;
+            });

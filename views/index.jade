@@ -1,0 +1,12 @@
+extends layout
+block content
+		div.content
+			p
+				span#qqLoginBtn
+			p.propaganda 文件传输从未如此简单
+		footer
+			script(type="text/javascript",src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js",data-redirecturi="http://davidyuan.me/upload",charset="utf-8",data-appid="101234242")
+			script.
+				QC.Login({
+					btnId:"qqLoginBtn"	//插入按钮的节点id
+				});

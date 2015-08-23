@@ -1,0 +1,46 @@
+extends layout
+block content
+	div.content
+		form(method="post",action="/file/uploading",enctype="multipart/form-data",role="form",class="form-control")
+			input(name="inputFile",type="file",multiple="mutiple")
+			input(name="uin",type = "hidden",value = uin)
+			button(name="submitFile",type="submit",class="btn btn-default btn-lg btn-block")
+				span(class="glyphicon glyphicon-upload",aria-hidden="true") 上传
+		p.propaganda 文件传输从未如此简单
+	footer
+	script.
+		var hash = window.location.hash;
+		var token = hash.match(/#access_token=(.*)&.*/)[1];
+		setCookie('access_token',token);
+		var uin;
+		alert(token);
+		function toParamMap(str){
+			var map = {};
+			var segs = str.split("&");
+			for(var i in segs){
+				var seg = segs[i];
+				var idx = seg.indexOf('=');
+		        	if(idx < 0){
+					continue;
+				}
+				var name = seg.substring(0, idx);
+				var value = seg.substring(idx+1);
+				map[name] = value;
+			}
+			return map;
+		}
+		function openImplict(url){
+			var script = document.createElement('script');
+			script.src = url;
+			document.body.appendChild(script);        
+		}
+		function callback(obj)
+		{
+			var openid = obj.openid;
+			alert("openid="+openid);
+		}
+		var path = "https://graph.qq.com/oauth2.0/me?";
+		var queryParams = ['access_token='+token, 'callback=callback'];
+		var query = queryParams.join('&');
+		var url = path + query;
+		openImplict(url);

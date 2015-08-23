@@ -1,0 +1,22 @@
+doctype
+html(lang="en")
+	head
+		title= title
+		link(rel='stylesheet',href='/stylesheets/bootstrap.min.css')
+		link(rel='stylesheet',href='/stylesheets/bootstarp.theme.css')
+		link(rel='stylesheet',href='/stylesheets/style.css')
+		script(src="/javascripts/jquery-1.11.1.min.js")
+		script(src="/javascripts/jquery.particleground.min.js")
+		script(src="/javascripts/grain.js")
+		script(src="/javascripts/processCookie.js")
+	body
+		header
+			div#particles
+				div.intro
+					a.title(href="/")
+						h1.title #{title}
+					div.btn-group.btn-group-lg(role="group")
+						a(href="/upload").btn.btn-default.tab(type="button") 上传
+						a(href="/download").btn.btn-default.tab(type="button") 下载
+					p.tip QQ扫码直接上传微云，任意地点输入口令即可下载
+		block content
